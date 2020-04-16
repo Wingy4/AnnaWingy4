@@ -1,0 +1,40 @@
+body{
+  margin: 0;
+  font-size: 20px;
+  text-align: justify;
+}
+
+header {
+ text-align: center;
+ margin: 0;
+}
+
+main div{
+max-width: 700px;
+margin: auto;
+}
+
+img{
+   margin: 0;
+}
+
+div.end{
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  font-size: 70%;
+  color: #999999;
+}
+
+div.end img{margin: 0;}
+div.end p{margin: 0}
+
+footer table{
+  width: auto;
+  text-align: center;
+  font-size: 70%;
+  color: #999999;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+}
