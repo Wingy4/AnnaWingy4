@@ -1,0 +1,52 @@
+
+
+
+
+
+
+footer table{
+  text-align: center;
+  font-size: 70%;
+  color: #999999;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+  width: 700px;
+}
+
+footer img{
+  height: 20px;
+}
+
+footer table th {
+  padding: 15px 15px 0 0;}
+
+footer table th.links {
+  padding: 15px 15px 0 0;
+  text-align: left;
+}
+
+footer table td{
+  padding: 0 15px 0 0;
+}
+
+ul{
+  list-style-type: none;
+  text-align: left;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+ul.contacts {
+  text-align: center;
+}
+
+li.inline {
+  display: inline;
+  align-items: center;
+}
+
+footer li a{
+  color: #999999;
+  font-style: oblique;
+}
