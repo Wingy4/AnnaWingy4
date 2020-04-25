@@ -1,6 +1,10 @@
 
 
-
+h2.sticky {
+    background: #999999;
+    position: sticky;
+    bottom: 0;
+  }
 
 
 
