@@ -1,7 +1,31 @@
+body {
+  margin-left: 30px;
+}
 
+body h1 {
+  margin-left: 30px;
+}
 
+div.header {
+text-align: center;
+width: 600px;
+margin: auto;
+}
 
+div.header img {
+float: right;
 
+}
+
+h2.sticky {
+    background: #999999;
+    position: sticky;
+    bottom: 0;
+    border-radius: 10px 10px 0 0;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+  }
 
 footer a{
   color: #666565;
