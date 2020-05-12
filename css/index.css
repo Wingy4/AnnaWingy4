@@ -1,7 +1,41 @@
 
+div.header img {
+  width: 300px;
+  border-radius: 250px;
+  float: right;
+}
 
+div.header{
+  text-align: center;
+}
 
+body table{
+align-items: center;
+}
 
+body img {
+  width: 25px;
+}
+
+body table td{
+  width: auto;
+  margin: 0;
+}
+
+body table td h4 {
+  margin: 0;
+}
+
+body table td h3 {
+  margin: 0;
+}
+body table td.empty {
+  width: 100px;
+}
+
+img.inline {
+  display: inline;
+}
 
 footer a{
   color: #666565;
@@ -18,7 +52,7 @@ footer table{
 }
 
 footer img{
-  height: 20px;
+  width: 20px;
 }
 
 footer table th {
