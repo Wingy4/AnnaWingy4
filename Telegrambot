@@ -6,47 +6,62 @@ TOKEN = "6870674489:AAEZcT-C23VY8AK6o-ktWmwhbQZ1pv6J8fo"
 
 # Функция стартового сообщения
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Создание клавиатуры из 10 кнопок
+    # Приветственное сообщение (часть 1 и часть 2)
+    welcome_message_1 = (
+        "Ват-ди в нашей дружной семье упоротых любителей Таиланда. Здесь мы будем учиться читать по-тайски.\n\n"
+        "Следующие 50 уроков мы будем учить тайский алфавит и правила чтения, базовые грамматические конструкции. "
+        "Это нам поможет ориентироваться в бесконечных тайских закорючках и познать тайский дзен."
+    )
+    welcome_message_2 = (
+        "Каждый урок состоит из теории и практики. Читаем сообщения, выполняем задания, проверяем себя в тесте. "
+        "Это всё для вашей самостоятельной свободной работы в том темпе и объёмах, которые нужны именно вам."
+    )
+    
+    # Отправка первой части приветственного сообщения
+    await update.message.reply_text(welcome_message_1)
+    # Отправка второй части приветственного сообщения
+    await update.message.reply_text(welcome_message_2)
+    
+    # Клавиатура с одной кнопкой "Содержание"
     keyboard = [
-        [InlineKeyboardButton(f"Кнопка {i+1}", callback_data=f"button_{i+1}")]
-        for i in range(10)
+        [InlineKeyboardButton("Содержание", callback_data="content")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
     # Отправка клавиатуры пользователю
-    await update.message.reply_text("Выберите кнопку:", reply_markup=reply_markup)
+    await update.message.reply_text("Выберите действие:", reply_markup=reply_markup)
 
 # Функция для обработки нажатий на кнопки
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()  # Подтверждаем получение запроса
     
-    # Определяем, какая кнопка была нажата
-    button_id = query.data  # callback_data, например "button_1", "button_2", и т.д.
+    # Проверяем, какую кнопку нажал пользователь
+    if query.data == "content":
+        # Клавиатура "Содержание" с пятью кнопками
+        content_keyboard = [
+            [InlineKeyboardButton("Вводное слово", callback_data="intro")],
+            [InlineKeyboardButton("Уроки 1-5", callback_data="lessons_1_5")],
+            [InlineKeyboardButton("Уроки 6-10", callback_data="lessons_6_10")],
+            [InlineKeyboardButton("Уроки 11-15", callback_data="lessons_11_15")],
+            [InlineKeyboardButton("Уроки 16-20", callback_data="lessons_16_20")]
+        ]
+        reply_markup = InlineKeyboardMarkup(content_keyboard)
+        await query.edit_message_text("Содержание:", reply_markup=reply_markup)
     
-    # Обработка разных веток в зависимости от нажатой кнопки
-    if button_id == "button_1":
-        await query.edit_message_text(text="Вы выбрали первую кнопку! Добро пожаловать в ветку 1.")
-    elif button_id == "button_2":
-        await query.edit_message_text(text="Вы выбрали вторую кнопку! Добро пожаловать в ветку 2.")
-    elif button_id == "button_3":
-        await query.edit_message_text(text="Вы выбрали третью кнопку! Добро пожаловать в ветку 3.")
-    elif button_id == "button_4":
-        await query.edit_message_text(text="Вы выбрали четвертую кнопку! Добро пожаловать в ветку 4.")
-    elif button_id == "button_5":
-        await query.edit_message_text(text="Вы выбрали пятую кнопку! Добро пожаловать в ветку 5.")
-    elif button_id == "button_6":
-        await query.edit_message_text(text="Вы выбрали шестую кнопку! Добро пожаловать в ветку 6.")
-    elif button_id == "button_7":
-        await query.edit_message_text(text="Вы выбрали седьмую кнопку! Добро пожаловать в ветку 7.")
-    elif button_id == "button_8":
-        await query.edit_message_text(text="Вы выбрали восьмую кнопку! Добро пожаловать в ветку 8.")
-    elif button_id == "button_9":
-        await query.edit_message_text(text="Вы выбрали девятую кнопку! Добро пожаловать в ветку 9.")
-    elif button_id == "button_10":
-        await query.edit_message_text(text="Вы выбрали десятую кнопку! Добро пожаловать в ветку 10.")
+    # Обработка каждой ветки содержания
+    elif query.data == "intro":
+        await query.edit_message_text("Это вводное слово для курса по тайскому языку.")
+    elif query.data == "lessons_1_5":
+        await query.edit_message_text("Уроки с 1 по 5. Добро пожаловать в первый блок!")
+    elif query.data == "lessons_6_10":
+        await query.edit_message_text("Уроки с 6 по 10. Продолжаем изучение!")
+    elif query.data == "lessons_11_15":
+        await query.edit_message_text("Уроки с 11 по 15. Вы уже делаете успехи!")
+    elif query.data == "lessons_16_20":
+        await query.edit_message_text("Уроки с 16 по 20. Отличная работа!")
     else:
-        await query.edit_message_text(text="Неизвестная кнопка.")
+        await query.edit_message_text("Неизвестная команда.")
 
 # Главная функция для запуска бота
 def main():
