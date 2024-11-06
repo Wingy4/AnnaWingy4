@@ -3,6 +3,7 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Cont
 
 # Токен вашего бота
 TOKEN = "6870674489:AAEZcT-C23VY8AK6o-ktWmwhbQZ1pv6J8fo"
+google_drive_link_lesson_1 = "https://drive.google.com/file/d/159ubwZNXIyjldfR7SxEnr2z1MABYf02j/view?usp=drive_link"
 
 # Функция стартового сообщения
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -84,7 +85,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         # Отправка ссылки на файл
         await query.message.reply_text(
-            f"Cкачай файл с прописями c Google Drive: [Скачать файл]({https://drive.google.com/file/d/159ubwZNXIyjldfR7SxEnr2z1MABYf02j/view?usp=drive_link})",
+            f"Cкачай файл с прописями c Google Drive: [Скачать файл]({google_drive_link_lesson_1})",
             parse_mode="Markdown"
         )
         
