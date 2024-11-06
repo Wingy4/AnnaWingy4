@@ -84,7 +84,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         # Отправка ссылки на файл
         await query.message.reply_text(
-            f"Вы можете скачать файл с прописями по этой ссылке: [Скачать файл]({https://drive.google.com/file/d/159ubwZNXIyjldfR7SxEnr2z1MABYf02j/view?usp=drive_link})",
+            f"Cкачай файл с прописями c Google Drive: [Скачать файл]({https://drive.google.com/file/d/159ubwZNXIyjldfR7SxEnr2z1MABYf02j/view?usp=drive_link})",
             parse_mode="Markdown"
         )
         
