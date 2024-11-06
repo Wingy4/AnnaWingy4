@@ -77,21 +77,22 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     elif query.data == "practice_1":
         practice_messages = [
-            "✍️ Прописи прописываем. Можешь распечатать себе, можешь просто в тетради аккуратно всё прописать. Повторяй вслух каждый слог/слово, который прописываешь.",
-            "🧑‍💻 Тест проходим"
+            "✍️ Прописи прописываем. Можешь распечатать себе, можешь просто в тетради аккуратно всё прописать."
         ]
         for message in practice_messages:
             await query.message.reply_text(message)
-
+        
+        # Отправка ссылки на файл
+        await query.message.reply_text(
+            f"Вы можете скачать файл с прописями по этой ссылке: [Скачать файл]({google_drive_link})",
+            parse_mode="Markdown"
+        )
+        
+        await query.message.reply_text("🧑‍💻 Тест проходим")
+        
         quiz_keyboard = [[InlineKeyboardButton("Начали!", url="t.me/QuizBot?start=UQSwXVxU")]]
         await query.message.reply_text("Пройди тест:", reply_markup=InlineKeyboardMarkup(quiz_keyboard))
 
-
-             # Отправка ссылки на файл
-        await query.message.reply_text(
-            f"Скачай файл с прописями с Google Drive: [Скачать файл]({https://drive.google.com/file/d/1EJVzhJoRClq3ZfJh2jdLcriErgSx_vHF/view?usp=sharing})",
-            parse_mode="Markdown"
-        )
         nav_keyboard = [
             [InlineKeyboardButton("Содержание", callback_data="content"), InlineKeyboardButton("Урок 2", callback_data="lesson_2")]
         ]
