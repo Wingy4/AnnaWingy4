@@ -4,6 +4,7 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Cont
 # Токен вашего бота
 TOKEN = "6870674489:AAEZcT-C23VY8AK6o-ktWmwhbQZ1pv6J8fo"
 google_drive_link_lesson_1 = "https://drive.google.com/file/d/1EJVzhJoRClq3ZfJh2jdLcriErgSx_vHF/view?usp=sharing"
+google_drive_link_practice_2 = "https://drive.google.com/file/d/159ubwZNXIyjldfR7SxEnr2z1MABYf02j/view?usp=drive_link"
 
 # Функция стартового сообщения
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -96,6 +97,44 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         nav_keyboard = [
             [InlineKeyboardButton("Содержание", callback_data="content"), InlineKeyboardButton("Урок 2", callback_data="lesson_2")]
+        ]
+        await query.message.reply_text("К следующему уроку:", reply_markup=InlineKeyboardMarkup(nav_keyboard))
+        
+    elif query.data == "lesson_2":
+        lesson_2_messages = [
+            "Сегодня мы проникнемся разницей долгих и кратких гласных.",
+            "Краткий звук [а] в открытом слоге обозначается с помощью буквы สระอะ [sà rà à] — ะ, которая ставится справа от согласной, после которой читается.\n\nНапример: ระ [rá], ละ [lá], มะ [má]\n\nКраткий звук [а] в закрытом слоге обозначается с помощью буквы — ั, которая называется ไม้หันอากาศ [mái hǎn aa kàat]. Эта гласная ставится сверху над начальной и конечной согласными в слоге, к которому относится. \n\nНапример: มัน [man] или นัน [nan]",
+            "Краткий звук [i] обозначается с помощью буквы สระอิ [sà rá ì] — ิ, которая ставится над согласной, после которой читается.\n\nНапример: ลิ [lí], นิ [ní], ฬิ [lí]"
+            "Пустота после любой краткой гласной образует смычку, которая делает слог «мёртвым». У мёртвых слогов свои правила чтения тонов."
+            "Запоминаем первое правило чтения «мёртвых» слогов:\n\nСогласная низкого класса с краткой гласной в мёртвом слоге даёт нам высокий тон.\n\nСейчас можешь открыть табличку тонов и найти это правило чтения."
+            "Высокий тон произносится с лёгкой вопросительной интонацией. Будто мы говорим «э?»«чо?». Попробуй забить в гугл слоги из задания и послушать их."
+        ]
+        for message in lesson_2_messages:
+            await query.message.reply_text(message)
+        
+        practice_keyboard = [[InlineKeyboardButton("Переходим к заданию", callback_data="practice_2")]]
+        reply_markup = InlineKeyboardMarkup(practice_keyboard)
+        await query.message.reply_text("Переходим к практике:", reply_markup=reply_markup)
+    
+    elif query.data == "practice_2":
+        practice_2_messages = [
+            "✍️ Прописываем прописи. В этот раз только одна страничка, но всегда можно больше 😏"
+        ]
+        for message in practice_2_messages:
+            await query.message.reply_text(message)
+        
+        await query.message.reply_text(
+            "Прописи на Google Drive: [Скачать файл]({})".format(google_drive_link_practice_2),
+            parse_mode="Markdown"
+        )
+        
+        await query.message.reply_text("🧑‍💻 Тест проходим")
+        
+        quiz_keyboard = [[InlineKeyboardButton("Начали!", url="t.me/QuizBot?start=H8Cc25B7")]]
+        await query.message.reply_text("Пройди тест:", reply_markup=InlineKeyboardMarkup(quiz_keyboard))
+
+        nav_keyboard = [
+            [InlineKeyboardButton("Содержание", callback_data="content"), InlineKeyboardButton("Урок 3", callback_data="lesson_3")]
         ]
         await query.message.reply_text("К следующему уроку:", reply_markup=InlineKeyboardMarkup(nav_keyboard))
 
