@@ -50,7 +50,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.message.edit_text("Выберите раздел:", reply_markup=reply_markup)
 
     # Обработчик для "Вводное слово"
-async def intro(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if query.data == "intro":
     messages = [
         "В тайском языке пять тонов. Как их произносить вам покажут замечательные тайцы на прекраснешем Ютубе. Например [вот](https://youtu.be/ZhqqWKhgdRw?si=NO9mtK5M4AwpSoXi)",
         "( ) — нейтральный \n (ˋ) — низкий \n (ˆ) — падающий \n (ˊ) — высокий \n (ˇ) — восходящий \n\nДа, это стандартная нумерация тайских тонов, её лучше запомнить. Постепенно мы изучим, научимся говорить и полюбим каждый из них. Мы правда их полюбим. Они красивые. Пока просто смотрим и осознаём, что они существуют.",
