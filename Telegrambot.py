@@ -46,8 +46,9 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("Уроки 11-15", callback_data="lessons_11_15")],
             [InlineKeyboardButton("Уроки 16-20", callback_data="lessons_16_20")]
         ]
-        reply_markup = InlineKeyboardMarkup(content_keyboard)
-        await query.edit_message_text("Содержание:", reply_markup=reply_markup)
+        reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.callback_query.message.edit_text("Выберите раздел:", reply_markup=reply_markup)
+
     # Обработчик для "Вводное слово"
 async def intro(update: Update, context: ContextTypes.DEFAULT_TYPE):
     messages = [
