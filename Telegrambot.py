@@ -65,7 +65,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.callback_query.message.reply_text(msg, parse_mode="Markdown")
 
     # Отправляем картинку
-    image_url = "blob:https://mega.nz/237f9256-b0c6-44fe-8de2-bc8baa047798"
+    image_url = "https://i.postimg.cc/FRGTBv4K/image.png"
     await update.callback_query.message.reply_photo(photo=image_url)
 
     # Продолжаем отправку сообщений
