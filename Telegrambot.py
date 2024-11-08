@@ -50,7 +50,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text("Содержание:", reply_markup=reply_markup)
     
    # Обработчик для "Вводное слово"
-    if query.data == "intro":
+    elif query.data == "intro":
         messages = [
         "В тайском языке пять тонов. Как их произносить вам покажут замечательные тайцы на прекраснешем Ютубе. Например [вот](https://youtu.be/ZhqqWKhgdRw?si=NO9mtK5M4AwpSoXi)",
         "( ) — нейтральный \n (ˋ) — низкий \n (ˆ) — падающий \n (ˊ) — высокий \n (ˇ) — восходящий \n\nДа, это стандартная нумерация тайских тонов, её лучше запомнить. Постепенно мы изучим, научимся говорить и полюбим каждый из них. Мы правда их полюбим. Они красивые. Пока просто смотрим и осознаём, что они существуют.",
@@ -94,8 +94,8 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("Урок 5", callback_data="lesson_5")],
             [InlineKeyboardButton("Назад", callback_data="content")]
         ]
-        reply_markup = InlineKeyboardMarkup(lessons_keyboard)
-        await query.edit_message_text("Уроки 1-5:", reply_markup=reply_markup)
+    reply_markup = InlineKeyboardMarkup(lessons_keyboard)
+    await query.edit_message_text("Уроки 1-5:", reply_markup=reply_markup)
 
     if query.data == "lesson_1":
         lesson_1_messages = [
@@ -113,7 +113,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup = InlineKeyboardMarkup(practice_keyboard)
         await query.message.reply_text("Переходим к практике:", reply_markup=reply_markup)
     
-    elif query.data == "practice_1":
+    if query.data == "practice_1":
         practice_messages = [
             "✍️ Прописи прописываем. Можешь распечатать себе, можешь просто в тетради аккуратно всё прописать."
         ]
