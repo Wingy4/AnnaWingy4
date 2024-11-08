@@ -72,7 +72,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Урок 1", callback_data="lesson_1")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.callback_query.message.reply_text("Выберите следующий шаг:", reply_markup=reply_markup)
+    await update.callback_query.message.reply_text("Дальше:", reply_markup=reply_markup)
 
     if query.data == "lessons_1_5":
         lessons_keyboard = [
@@ -137,9 +137,9 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for message in lesson_2_messages:
             await query.message.reply_text(message)
         
-        practice_keyboard = [[InlineKeyboardButton("Переходим к заданию", callback_data="practice_2")]]
+        practice_keyboard = [[InlineKeyboardButton("Наше задание", callback_data="practice_2")]]
         reply_markup = InlineKeyboardMarkup(practice_keyboard)
-        await query.message.reply_text("Переходим к практике:", reply_markup=reply_markup)
+        await query.message.reply_text("Теперь практика:", reply_markup=reply_markup)
     
     elif query.data == "practice_2":
         practice_2_messages = [
@@ -156,7 +156,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text("🧑‍💻 Тест проходим")
         
         quiz_keyboard = [[InlineKeyboardButton("Начали!", url="t.me/QuizBot?start=H8Cc25B7")]]
-        await query.message.reply_text("Пройди тест:", reply_markup=InlineKeyboardMarkup(quiz_keyboard))
+        await query.message.reply_text("Тест тут:", reply_markup=InlineKeyboardMarkup(quiz_keyboard))
 
         nav_keyboard = [
             [InlineKeyboardButton("Содержание", callback_data="content"), InlineKeyboardButton("Урок 3", callback_data="lesson_3")]
